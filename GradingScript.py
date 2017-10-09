@@ -9,7 +9,7 @@ import shutil
 from shutil import move
 
 # Allow the user to enter a directory to work from.
-working_dir = input("Enter the directory to work from: ")
+working_dir = input("Enter the path to the submissions directory: ")
 os.chdir(working_dir)
 print("Working in: " + os.getcwd())
 
