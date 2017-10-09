@@ -1,7 +1,7 @@
 # Author: Jon Seaman (.73)
 # Version: v1.0
 # Revised: 10/08/2017
-# All rights reserved
+# Copyright (c) 2017 Jon Seaman
 
 import os
 from os.path import join
