@@ -1,3 +1,8 @@
+# Author: Jon Seaman (.73)
+# Version: v1.0
+# Revised: 10/08/2017
+# All rights reserved
+
 import os
 from os.path import join
 import shutil
