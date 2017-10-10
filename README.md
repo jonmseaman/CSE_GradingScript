@@ -23,3 +23,7 @@ be imported into eclipse at the same time.
 Run the python script, then when prompted, enter the path to 'submissions' directory.
 
 ```python3 GradingScript.py```
+
+##### Importing
+
+You can now import all of the projects from the 'submissions' directory into eclipse.
