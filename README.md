@@ -15,8 +15,9 @@ be imported into eclipse at the same time.
 1. Download the zip of project files from carmen.
 2. Unzip the archive to a folder called 'submissions'.
 3. Open the 'submissions' folder.
-4. RClick -> Zip .> Extract to "\*\"
-5. Delete all of the zip files from 'submissions'
+4. Select all of the zip files.
+5. RClick -> Zip .> Extract to "\*\"
+6. Delete all of the zip files from 'submissions'
 
 ##### You are now ready to run the python script.
 

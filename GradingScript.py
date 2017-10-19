@@ -17,7 +17,7 @@ print("Working in: " + os.getcwd())
 for dir_or_file in os.listdir("."):
     if os.path.isdir(dir_or_file):
         # Grab name for renaming. This happens to be the students name.
-        name = dir_or_file.split(" - ")[1]
+        name = dir_or_file.split("_")[0]
         # go into sub_dir
         dir = os.path.join(".", dir_or_file)
         dir = join(dir, os.listdir(dir)[0])
