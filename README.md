@@ -23,7 +23,7 @@ be imported into eclipse at the same time.
 
 Run the python script, then when prompted, enter the path to 'submissions' directory.
 
-```python GradingScript.py``` or ```python3 GradingScript.py```
+```py -3 GradingScript.py```
 
 ##### Importing
 
