@@ -41,11 +41,13 @@ def rename_projects(working_dir):
                     lines.append(line)
 
             # Write the lines back to the file.
-            print("Writing file..." + project_filename, end='')
+            print("Writing file..." + project_filename)
             project_file = open(project_filename, mode='w')
             project_file.writelines(lines)
-            os.chdir(original_dir)
-            print("\nDone.")
+
+    # Revert change to working dir.
+    os.chdir(original_dir)
+    print("\nDone.")
 
 
 def get_submissions_path():
@@ -94,6 +96,6 @@ if __name__ == "__main__":
     unzip_submission_file(submissionsPath)
 
     # Rename the projects that were extracted.
-    rename_projects(submissionsPath)
+    rename_projects(os.path.splitext(submissionsPath)[0])
 
     input("Press enter to exit...")
