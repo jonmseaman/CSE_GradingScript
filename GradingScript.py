@@ -58,7 +58,33 @@ def get_submissions_path():
 
 
 def unzip_submission_file(path):
-    pass
+    import zipfile
+
+    # Unzip the submissions file.
+    working_dir = os.path.splitext(path)[0]
+
+    with zipfile.ZipFile(path, mode="r") as submissions:
+        submissions.extractall(working_dir)
+
+    # Unzip each submission
+    for filename in os.listdir(working_dir):
+
+        filepath = os.path.join(working_dir, filename)
+        if filepath.endswith(".zip"):
+            with zipfile.ZipFile(filepath, mode="r") as project:
+                output_folder = os.path.splitext(filepath)[0]
+                print(filename + " ----> " + output_folder)
+                project.extractall(output_folder)
+
+    # Delete each submission zip
+    print("Cleaning up")
+    for filename in os.listdir(working_dir):
+
+        filepath = os.path.join(working_dir, filename)
+        if filepath.endswith(".zip"):
+            print("X " + filepath)
+            os.remove(filepath)
+
 
 
 if __name__ == "__main__":
