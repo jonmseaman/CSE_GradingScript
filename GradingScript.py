@@ -88,7 +88,6 @@ def unzip_submission_file(path):
             os.remove(filepath)
 
 
-
 if __name__ == "__main__":
     # Get the path to the submissions.zip
     submissionsPath = get_submissions_path()
