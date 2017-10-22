@@ -11,9 +11,10 @@ be imported into eclipse at the same time.
 
 ##### Running the script
 
-1. Download the zip of project files from carmen.
+1. Download the zip of project files from carmen by going to course page on osu.instructure.com
+   Then go to `Assignments` -> `Project N` -> `Download Submissions`
 2. Double click `GradingScript.py`
-3. Type the path to the submissions.zip file. This will create a directory `submissions` in the same folder
+3. Type the path to the `submissions.zip` file. This will create a directory `submissions` in the same folder
    as `submissions.zip`
 
 ##### Importing
