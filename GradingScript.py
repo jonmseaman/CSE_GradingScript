@@ -1,15 +1,10 @@
 # Author: Jon Seaman (.73)
-# Version: v1.1
+# Version: v1.2
 # Revised: 10/21/2017
 # Copyright (c) 2017 Jon Seaman
 
 import os
 from os.path import join
-
-
-# TODO: Create a function that renames all of the projects by editing .project files.
-
-# TODO: Stop at the end of the program so that the user can see the output.
 
 def rename_projects(working_dir):
     # Allow the user to enter a directory to work from.
@@ -19,42 +14,49 @@ def rename_projects(working_dir):
 
     # For each dir in the current folder.
     for dir_or_file in os.listdir("."):
-        if os.path.isdir(dir_or_file):
-            # Grab name for renaming. This happens to be the students name.
-            name = dir_or_file.split("_")[0]
-            # go into sub_dir
-            directory = os.path.join(".", dir_or_file)
-            directory = join(directory, os.listdir(directory)[0])
-
-            # Look for .project in dir, rename project
-            project_filename = join(directory, ".project")
-            project_file = open(project_filename, mode='r')
-
-            # Look in project file to replace the project name
-            lines = []
-            found_name = False
-            for line in project_file:
-                if "<name>" in line and not found_name:
-                    lines.append("<name>" + name + "</name>\n")
-                    found_name = True
-                else:
-                    lines.append(line)
-
-            # Write the lines back to the file.
-            print("Writing file..." + project_filename)
-            project_file = open(project_filename, mode='w')
-            project_file.writelines(lines)
-
+        rename_project(dir_or_file)
     # Revert change to working dir.
     os.chdir(original_dir)
     print("\nDone.")
 
 
-def get_submissions_path():
-    path = input("Enter the path to the submission.zip: ")
-    while not os.path.isfile(path):
+def rename_project(project_dir):
+    if os.path.isdir(project_dir):
+        # Grab name for renaming. This happens to be the students name.
+        name = project_dir.split("_")[0]
+        # go into sub_dir
+        directory = os.path.join(".", project_dir)
+        directory = join(directory, os.listdir(directory)[0])
+
+        # Look for .project in dir, rename project
+        project_filename = join(directory, ".project")
+        project_file = open(project_filename, mode='r')
+
+        # Look in project file to replace the project name
+        lines = []
+        found_name = False
+        for line in project_file:
+            if "<name>" in line and not found_name:
+                lines.append("<name>" + name + "</name>\n")
+                found_name = True
+            else:
+                lines.append(line)
+
+        # Write the lines back to the file.
+        print("Writing file..." + project_filename)
+        project_file = open(project_filename, mode='w')
+        project_file.writelines(lines)
+
+
+def get_submissions_path() -> str:
+    print("Enter the path to the submission.zip: ")
+    path = input("Leave blank for default value ('./submissions.zip'): ")
+    while not os.path.isfile(path) and not path == "":
         print("That is not a valid file path.")
         path = input("Enter the path to the submission.zip: ")
+
+    if path == "":
+        path = "./submissions.zip"
 
     return path
 
