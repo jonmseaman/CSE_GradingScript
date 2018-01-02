@@ -90,7 +90,37 @@ def unzip_submission_file(path):
             os.remove(filepath)
 
 
+def download_components_jar():
+    """
+    Checks if components.jar exists in the current directory
+    The jar will be downloaded if not.
+    """
+    components_path = "./components.jar"
+    components_url = "http://cse.osu.edu/software/common/components.jar"
+    if not os.path.isfile(components_path):
+        # Download the jar
+        import urllib.request
+        urllib.request.urlretrieve(components_url, components_path)
+
+
+def download_workspace_template():
+    """
+    Verifies that the workspace template is available in the current directory.
+    :return: None
+    """
+    ws_path = "./OsuCseWsTemplate.zip"
+    ws_url = "http://cse.osu.edu/software/common/OsuCseWsTemplate.zip"
+    if not os.path.isfile(ws_path):
+        # Download the jar
+        import urllib.request
+        urllib.request.urlretrieve(ws_url, ws_path)
+
+
 if __name__ == "__main__":
+    # Gather dependencies
+    download_components_jar()
+    download_workspace_template()
+
     # Get the path to the submissions.zip
     submissionsPath = get_submissions_path()
     # Extract that file to a working directory.
