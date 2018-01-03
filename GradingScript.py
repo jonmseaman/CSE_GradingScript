@@ -6,6 +6,7 @@
 import os
 from os.path import join
 
+
 def rename_projects(working_dir):
     # Allow the user to enter a directory to work from.
     original_dir = os.getcwd()
@@ -116,11 +117,15 @@ def download_workspace_template():
         urllib.request.urlretrieve(ws_url, ws_path)
 
 
-if __name__ == "__main__":
-    # Gather dependencies
-    download_components_jar()
-    download_workspace_template()
+def extract_ws_template(ws_path):
+    # Extract the template
+    import zipfile
 
+    with zipfile.ZipFile(ws_path, mode="r") as ws_zip:
+        ws_zip.extractall()
+
+
+if __name__ == "__main__":
     # Get the path to the submissions.zip
     submissionsPath = get_submissions_path()
     # Extract that file to a working directory.
@@ -128,5 +133,9 @@ if __name__ == "__main__":
 
     # Rename the projects that were extracted.
     rename_projects(os.path.splitext(submissionsPath)[0])
+
+    # Setup the eclipse workspace
+    download_components_jar()
+    download_workspace_template()
 
     input("Press enter to exit...")
